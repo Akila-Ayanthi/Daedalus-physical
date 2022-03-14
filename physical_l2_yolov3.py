@@ -519,7 +519,7 @@ if __name__ == '__main__':
 	sess.run(init)
 	ORACLE = YOLO(0.6, 0.5)  # The auguments do not matter.
 	X_test = []
-	for (root, dirs, files) in os.walk('../datasets/COCO/val2017/val2017/'):
+	for (root, dirs, files) in os.walk('/home/dissana8/LAB/Visor'):
 		if files:
 			for f in files:
 				print(f)
