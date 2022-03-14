@@ -4,6 +4,7 @@ import sys
 #os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 sys.path.insert(0, '..')
 
+from tensorflow import keras
 from keras import backend as K
 import numpy as np
 import random as rd
