@@ -7,7 +7,7 @@ sys.path.insert(0, '..')
 # import keras
 import tensorflow as tf
 from tensorflow import keras
-from keras import backend as K
+from tf.keras import backend as K
 import numpy as np
 import random as rd
 from tensorflow.python import debug as tf_debug
