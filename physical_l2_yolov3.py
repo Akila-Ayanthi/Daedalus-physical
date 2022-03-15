@@ -6,21 +6,20 @@ sys.path.insert(0, '..')
 
 # import keras
 import tensorflow as tf
-from tensorflow import keras
-from tensorflow.keras import backend as K
+from keras import backend as K
 import numpy as np
 import random as rd
 from tensorflow.python import debug as tf_debug
-from tensorflow.keras.models import Model
-from tensorflow.keras import losses
+from keras.models import Model
+from keras import losses
 
-from tensorflow.keras.layers.convolutional import Convolution2D, MaxPooling2D, ZeroPadding2D
-from tensorflow.keras.layers import Conv2D, MaxPooling2D, Input
-from tensorflow.keras.layers import Dense, Dropout, Activation, Flatten
+from keras.layers.convolutional import Convolution2D, MaxPooling2D, ZeroPadding2D
+from keras.layers import Conv2D, MaxPooling2D, Input
+from keras.layers import Dense, Dropout, Activation, Flatten
 
-from tensorflow.keras.datasets import cifar10
-from tensorflow.keras.models import load_model
-from tensorflow.keras.callbacks import EarlyStopping
+from keras.datasets import cifar10
+from keras.models import load_model
+from keras.callbacks import EarlyStopping
 
 from YOLOv3.model.yolo_model import YOLO
 import cv2
