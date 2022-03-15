@@ -5,10 +5,11 @@ import sys
 sys.path.insert(0, '..')
 
 # import keras
+import tensorflow as tf
+from tensorflow import keras
 from keras import backend as K
 import numpy as np
 import random as rd
-import tensorflow as tf
 from tensorflow.python import debug as tf_debug
 from keras.models import Model
 from keras import losses
