@@ -521,20 +521,24 @@ if __name__ == '__main__':
 	ORACLE = YOLO(0.6, 0.5)  # The auguments do not matter.
 	X_test = []
 	for (root, dirs, files) in os.walk('/home/dissana8/LAB/Visor'):
-		if files:
-			for f in files:
-				print(f)
-				path = os.path.join(root, f)
-				image = cv2.imread(path)
-				image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)  # RGB
-				image = process_image(image)
-				X_test.append(image)
-				EXAMPLE_NUM -= 1
-				if EXAMPLE_NUM == 0:
-					break
-	X_test = np.concatenate(X_test, axis=0)
-	print('X_test shape:', X_test.shape)
-	attacker = Daedalus(sess, ORACLE)
-	X_adv, distortions = attacker.attack(X_test)
-	writer = tf.summary.FileWriter("log", sess.graph)
-	writer.close()
+		for name in files:
+			if name.endswith('jpg'):
+            	# fpaths.append(os.path.join(path, name))
+		# if files:
+		# 	for f in files:
+		# 		print(f)
+				path = os.path.join(root, name)
+				print(path)
+	# 			image = cv2.imread(path)
+	# 			image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)  # RGB
+	# 			image = process_image(image)
+	# 			X_test.append(image)
+	# 			EXAMPLE_NUM -= 1
+	# 			if EXAMPLE_NUM == 0:
+	# 				break
+	# X_test = np.concatenate(X_test, axis=0)
+	# print('X_test shape:', X_test.shape)
+	# attacker = Daedalus(sess, ORACLE)
+	# X_adv, distortions = attacker.attack(X_test)
+	# writer = tf.summary.FileWriter("log", sess.graph)
+	# writer.close()
