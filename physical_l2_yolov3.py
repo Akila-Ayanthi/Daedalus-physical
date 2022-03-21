@@ -13,7 +13,7 @@ from tensorflow.python import debug as tf_debug
 from tensorflow.keras.models import Model
 from tensorflow.keras import losses
 
-from tensorflow.keras.layers.convolutional import Convolution2D, MaxPooling2D, ZeroPadding2D
+from tensorflow.keras.layers import Convolution2D, MaxPooling2D, ZeroPadding2D
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Input
 from tensorflow.keras.layers import Dense, Dropout, Activation, Flatten
 
