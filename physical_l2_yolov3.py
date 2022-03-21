@@ -540,5 +540,6 @@ if __name__ == '__main__':
 	print('X_test shape:', X_test.shape)
 	attacker = Daedalus(sess, ORACLE)
 	X_adv, distortions = attacker.attack(X_test)
+	print(X_adv)
 	writer = tf.summary.FileWriter("log", sess.graph)
 	writer.close()
