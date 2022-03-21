@@ -6,12 +6,12 @@ sys.path.insert(0, '..')
 
 # import keras
 import tensorflow as tf
-from tf.keras import backend as K
+from tensorflow.keras import backend as K
 import numpy as np
 import random as rd
 from tensorflow.python import debug as tf_debug
-from keras.models import Model
-from keras import losses
+from tensorflow.keras.models import Model
+from tensorflow.keras import losses
 
 from keras.layers.convolutional import Convolution2D, MaxPooling2D, ZeroPadding2D
 from keras.layers import Conv2D, MaxPooling2D, Input
