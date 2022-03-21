@@ -17,9 +17,9 @@ from tensorflow.keras.layers import Convolution2D, MaxPooling2D, ZeroPadding2D
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Input
 from tensorflow.keras.layers import Dense, Dropout, Activation, Flatten
 
-from keras.datasets import cifar10
-from keras.models import load_model
-from keras.callbacks import EarlyStopping
+from tensorflow.keras.datasets import cifar10
+from tensorflow.keras.models import load_model
+from tensorflow.keras.callbacks import EarlyStopping
 
 from YOLOv3.model.yolo_model import YOLO
 import cv2
