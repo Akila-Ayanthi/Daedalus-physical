@@ -15,7 +15,7 @@ class YOLO:
         """
         self._t1 = obj_threshold
         self._t2 = nms_threshold
-        self._yolo = load_model('../YOLOv3/data/yolo.h5')
+        self._yolo = load_model('/home/dissana8/Daedalus-physical/YOLOv3/data/yolo.h5')
 
     def _process_feats(self, out, anchors, mask):
         """process output features.
