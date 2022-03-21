@@ -521,7 +521,7 @@ if __name__ == '__main__':
 	ORACLE = YOLO(0.6, 0.5)  # The auguments do not matter.
 	X_test = []
 	# for (root, dirs, files) in os.walk('/home/dissana8/LAB/Visor'):
-	for (root, dirs, files) in os.walk('/home/dissana8/adversarial/adversarial_attack/data'):
+	for (root, dirs, files) in os.walk('/home/dissana8/Daedalus-physical/datasets/COCO/val2017/val2017/Test/'):
 		for name in files:
 			if name.endswith('jpg'):
             	# fpaths.append(os.path.join(path, name))
