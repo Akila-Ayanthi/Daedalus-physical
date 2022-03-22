@@ -38,7 +38,7 @@ BATCH_SIZE = 1						# number of adversarial example generated in each batch
 BINARY_SEARCH_STEPS = 5     		# number of times to adjust the constsant with binary search
 INITIAL_consts = 1		        	# the initial constsant c to pick as a first guess
 CLASS_NUM = 80						# 80 for COCO dataset
-MAX_ITERATIONS = 10000      		# number of iterations to perform gradient descent
+MAX_ITERATIONS = 1000      		# number of iterations to perform gradient descent
 ABORT_EARLY = True          		# if we stop improving, abort gradient descent early
 LEARNING_RATE = 1e-2        		# larger values converge faster to less accurate results
 IMAGE_SHAPE = (416, 416, 3)         # input image shape
@@ -540,6 +540,6 @@ if __name__ == '__main__':
 	print('X_test shape:', X_test.shape)
 	attacker = Daedalus(sess, ORACLE)
 	X_adv, distortions = attacker.attack(X_test)
-	print(X_adv)
+	io.imsave('adv_poster.png', X_adv)
 	writer = tf.summary.FileWriter("log", sess.graph)
 	writer.close()
