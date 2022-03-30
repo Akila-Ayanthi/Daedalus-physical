@@ -343,7 +343,7 @@ def gen_images(width, height, savename, gt):
 
 
     if __name__=='__main__':
-        savename = '/home/dissana8/pytorch-YOLOv4/output_adv/'
+        savename = '/home/dissana8/Daedalus-physical/Adv_Images/'
 
 
         gt = []
