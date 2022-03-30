@@ -1,9 +1,23 @@
 import cv2
 import numpy as np
+import torch
+from torch import nn
+import torch.nn.functional as F
+# from tool.torch_utils import *
 
 def findClosest(time, camera_time_list):
     val = min(camera_time_list, key=lambda x: abs(x - time))
     return camera_time_list.index(val)
+
+def box_center_to_corner(boxes):
+    """Convert from (center, width, height) to (upper-left, lower-right)."""
+    cx, cy, w, h = boxes[0], boxes[1], boxes[2], boxes[3]
+    x1 = cx - 0.5 * w
+    y1 = cy - 0.8 * h
+    x2 = cx + 0.5 * w
+    y2 = cy + 0.2 * h
+    boxes = torch.stack((x1, y1, x2, y2), axis=-1)
+    return boxes
 
 def custom_bbox(gt_coords, img, imgname):
     cbbox_coords = []
@@ -171,7 +185,7 @@ def gen_images(width, height, savename, gt):
 
             replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
             cv2.imwrite(sname, replace)
-        break
+        # break
    
 
 #     # view 02 success rate
