@@ -40,11 +40,12 @@ def custom_bbox(gt_coords, img, imgname):
                 
     return img, cbbox_coords
 
-def gen_images(width, height, savename, gt):
+def gen_images(width, height, savename, gt, file_name):
     cam1_det, cam2_det, cam3_det, cam4_det= 0, 0, 0, 0
     cam1_gt, cam2_gt, cam3_gt, cam4_gt = 0, 0, 0, 0
 
     patch = cv2.imread("/home/dissana8/Daedalus-physical/physical_examples/0.3 confidence__/adv_poster.png")
+    print("patch read")
     resized_patch = cv2.resize(patch, (16, 16))
 
 
@@ -358,7 +359,7 @@ def gen_images(width, height, savename, gt):
 
     if __name__=='__main__':
         savename = '/home/dissana8/Daedalus-physical/Adv_Images/'
-
+        file_name = 'LAB-GROUNDTRUTH.ref'
 
         gt = []
         gt.append(np.load('/home/dissana8/LAB/data/LAB/cam1_coords__.npy', allow_pickle=True))
@@ -367,5 +368,5 @@ def gen_images(width, height, savename, gt):
         gt.append(np.load('/home/dissana8/LAB/data/LAB/cam4_coords__.npy', allow_pickle=True))
 
         height, width = 416, 416
-        gen_images(height, width, savename, gt)
+        gen_images(height, width, savename, gt, file_name)
 
