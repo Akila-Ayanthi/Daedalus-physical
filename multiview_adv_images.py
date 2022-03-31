@@ -161,31 +161,32 @@ def gen_images(width, height, savename, gt, file_name):
 
         imgname = '/'.join(imgfile)
         sname = savename + imgname
+        print(sname)
 
         # img, bbox = plot_boxes_cv2(img, boxes[0], sname, class_names)
 
 
-        image, cbbox = custom_bbox(gt[0], img, imgname)
-        # print(cbbox)
-        # img = cv2.rectangle(sized, (cbbox[0][0], cbbox[0][1]), (cbbox[0][2], cbbox[0][3]), (0, 0, 255), 2)
-        # img = cv2.rectangle(img, (cbbox[1][0], cbbox[1][1]), (cbbox[1][2], cbbox[1][3]), (0, 0, 255), 2)
-        # print("resized patch ")
-        # print(resized_patch.shape)
-        replace = sized.copy()
-        for i in range(len(cbbox)):
-            x = int((cbbox[i][0]+cbbox[i][2])/2)
-            y = int((cbbox[i][1]+cbbox[i][3])/2)
-            print(x)
-            print(y)
+        # image, cbbox = custom_bbox(gt[0], img, imgname)
+        # # print(cbbox)
+        # # img = cv2.rectangle(sized, (cbbox[0][0], cbbox[0][1]), (cbbox[0][2], cbbox[0][3]), (0, 0, 255), 2)
+        # # img = cv2.rectangle(img, (cbbox[1][0], cbbox[1][1]), (cbbox[1][2], cbbox[1][3]), (0, 0, 255), 2)
+        # # print("resized patch ")
+        # # print(resized_patch.shape)
+        # replace = sized.copy()
+        # for i in range(len(cbbox)):
+        #     x = int((cbbox[i][0]+cbbox[i][2])/2)
+        #     y = int((cbbox[i][1]+cbbox[i][3])/2)
+        #     print(x)
+        #     print(y)
 
-            print(replace[y-8: y +8, x-8 : x + 8].shape)
-            if (y+8)>416 or (x+8)>416 or (x-8)<0 or (y-8)<0:
-                continue
-            else:
-                replace[y-8: y +8, x-8 : x + 8] = resized_patch
+        #     print(replace[y-8: y +8, x-8 : x + 8].shape)
+        #     if (y+8)>416 or (x+8)>416 or (x-8)<0 or (y-8)<0:
+        #         continue
+        #     else:
+        #         replace[y-8: y +8, x-8 : x + 8] = resized_patch
 
-            replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
-            cv2.imwrite(sname, replace)
+        #     replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
+        #     cv2.imwrite(sname, replace)
         # break
    
 
