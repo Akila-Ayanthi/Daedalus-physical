@@ -162,11 +162,11 @@ def gen_images(width, height, savename, gt, file_name):
 
         imgname = '/'.join(imgfile)
         sname = savename + imgname
-        print(sname)
+        print(sname.split('/')[:9])
 
 
-        if not os.path.exists(sname.split('/')[:9]):
-            os.makedirs(sname.split('/')[:9])
+        # if not os.path.exists(sname.split('/')[:9]):
+        #     os.makedirs(sname.split('/')[:9])
         
         # img, bbox = plot_boxes_cv2(img, boxes[0], sname, class_names)
 
