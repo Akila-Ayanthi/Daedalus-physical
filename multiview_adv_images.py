@@ -4,6 +4,7 @@ import torch
 from torch import nn
 import torch.nn.functional as F
 # from tool.torch_utils import *
+import os
 
 def findClosest(time, camera_time_list):
     val = min(camera_time_list, key=lambda x: abs(x - time))
@@ -141,10 +142,10 @@ def gen_images(width, height, savename, gt, file_name):
     print("View 01 success rate")
     for ele in enumerate(c1_frame_no):
         #real images
-        # im = "/home/dissana8/LAB/Visor/cam1/"+ele[1]
+        im = "/home/dissana8/LAB/Visor/cam1/"+ele[1]
 
         #adversarial images
-        im = "/home/dissana8/TOG/Adv_images/vanishing/LAB/Visor/cam1/"+ele[1]
+        # im = "/home/dissana8/TOG/Adv_images/vanishing/LAB/Visor/cam1/"+ele[1]
         img = cv2.imread(im)
         sized = cv2.resize(img, (width, height))
         sized = cv2.cvtColor(sized, cv2.COLOR_BGR2RGB)
@@ -163,6 +164,10 @@ def gen_images(width, height, savename, gt, file_name):
         sname = savename + imgname
         print(sname)
 
+
+        if not os.path.exists(sname[:9]):
+            os.makedirs(sname[:9])
+        
         # img, bbox = plot_boxes_cv2(img, boxes[0], sname, class_names)
 
 
