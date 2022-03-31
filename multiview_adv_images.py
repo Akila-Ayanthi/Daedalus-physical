@@ -357,16 +357,16 @@ def gen_images(width, height, savename, gt, file_name):
 #     cv2.imwrite('replace.png', replace)
 
 
-    if __name__=='__main__':
-        savename = '/home/dissana8/Daedalus-physical/Adv_Images/'
-        file_name = 'LAB-GROUNDTRUTH.ref'
+if __name__=='__main__':
+    savename = '/home/dissana8/Daedalus-physical/Adv_Images/'
+    file_name = 'LAB-GROUNDTRUTH.ref'
 
-        gt = []
-        gt.append(np.load('/home/dissana8/LAB/data/LAB/cam1_coords__.npy', allow_pickle=True))
-        gt.append(np.load('/home/dissana8/LAB/data/LAB/cam2_coords__.npy', allow_pickle=True))
-        gt.append(np.load('/home/dissana8/LAB/data/LAB/cam3_coords__.npy', allow_pickle=True))
-        gt.append(np.load('/home/dissana8/LAB/data/LAB/cam4_coords__.npy', allow_pickle=True))
+    gt = []
+    gt.append(np.load('/home/dissana8/LAB/data/LAB/cam1_coords__.npy', allow_pickle=True))
+    gt.append(np.load('/home/dissana8/LAB/data/LAB/cam2_coords__.npy', allow_pickle=True))
+    gt.append(np.load('/home/dissana8/LAB/data/LAB/cam3_coords__.npy', allow_pickle=True))
+    gt.append(np.load('/home/dissana8/LAB/data/LAB/cam4_coords__.npy', allow_pickle=True))
 
-        height, width = 416, 416
-        gen_images(height, width, savename, gt, file_name)
+    height, width = 416, 416
+    gen_images(height, width, savename, gt, file_name)
 
