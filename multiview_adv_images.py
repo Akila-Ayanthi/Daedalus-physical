@@ -367,5 +367,5 @@ def gen_images(width, height, savename, gt):
         gt.append(np.load('/home/dissana8/LAB/data/LAB/cam4_coords__.npy', allow_pickle=True))
 
         height, width = 416, 416
-        gen_images()
+        gen_images(height, width, savename, gt)
 
