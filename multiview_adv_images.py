@@ -194,7 +194,11 @@ def gen_images(width, height, savename, gt, file_name):
                 replace[y-8: y +8, x-8 : x + 8] = resized_patch
 
             replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
-            cv2.imwrite(sname, replace)
+            print("replaced")
+            try:
+                cv2.imwrite(sname, replace)
+            except:
+                print("cannot save")
         # break
    
 
