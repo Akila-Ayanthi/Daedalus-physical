@@ -155,14 +155,15 @@ def gen_images(width, height, savename, gt, file_name):
         #     boxes = do_detect(model, sized, 0.4, 0.6, use_cuda)
 
         # #real images
-        imgfile = im.split('/')[6:]
+        imgfile = im.split('/')[5:]
 
         # #adv images
         # imgfile = im.split('/')[9:]
 
         imgname = '/'.join(imgfile)
         sname = savename + imgname
-        print(sname.split('/')[:9])
+        imgname = '/'.join(sname)
+        print(imgname)
 
 
         # if not os.path.exists(sname.split('/')[:9]):
