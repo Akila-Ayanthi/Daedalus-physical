@@ -163,7 +163,9 @@ def gen_images(width, height, savename, gt, file_name):
         imgname = '/'.join(imgfile)
         sname = savename + imgname
         # imgname = '/'.join(sname)
-        print(sname.split('/')[:7])
+        sname_ = sname.split('/')[:7]
+        directory = '/'.join(sname)
+        print(directory)
 
 
         # if not os.path.exists(sname.split('/')[:7]):
