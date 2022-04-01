@@ -23,6 +23,8 @@ def box_center_to_corner(boxes):
 def custom_bbox(gt_coords, img, imgname):
     cbbox_coords = []
     for k in range(len(gt_coords)):
+        print(gt_coords[k][0])
+        print(imgname)
         if gt_coords[k][0] == imgname:
             print(gt_coords[k][0])
             box = [float(gt_coords[k][2]), float(gt_coords[k][3]), 50, 80]
@@ -38,7 +40,7 @@ def custom_bbox(gt_coords, img, imgname):
             cbbox_coords.append(coords)
                 
             img = cv2.rectangle(img, (x1, y1), (x2, y2), (0, 0, 255), 2)
-                
+    print(cbbox_coords)         
     return img, cbbox_coords
 
 def gen_images(width, height, savename, gt, file_name):
@@ -175,7 +177,7 @@ def gen_images(width, height, savename, gt, file_name):
 
 
         image, cbbox = custom_bbox(gt[0], img, imgname)
-        print(cbbox)
+        # print(cbbox)
         # # print(cbbox)
         # # img = cv2.rectangle(sized, (cbbox[0][0], cbbox[0][1]), (cbbox[0][2], cbbox[0][3]), (0, 0, 255), 2)
         # # img = cv2.rectangle(img, (cbbox[1][0], cbbox[1][1]), (cbbox[1][2], cbbox[1][3]), (0, 0, 255), 2)
