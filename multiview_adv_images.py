@@ -40,7 +40,7 @@ def custom_bbox(gt_coords, img, imgname):
             cbbox_coords.append(coords)
                 
             img = cv2.rectangle(img, (x1, y1), (x2, y2), (0, 0, 255), 2)
-            print(cbbox_coords)         
+            # print(cbbox_coords)         
     return img, cbbox_coords
 
 def gen_images(width, height, savename, gt, file_name):
@@ -150,8 +150,8 @@ def gen_images(width, height, savename, gt, file_name):
         #adversarial images
         # im = "/home/dissana8/TOG/Adv_images/vanishing/LAB/Visor/cam1/"+ele[1]
         img = cv2.imread(im)
-        sized = cv2.resize(img, (width, height))
-        sized = cv2.cvtColor(sized, cv2.COLOR_BGR2RGB)
+        # sized = cv2.resize(img, (width, height))
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
         # for j in range(2):  # This 'for' loop is for speed check
         #             # Because the first iteration is usually longer
@@ -187,24 +187,27 @@ def gen_images(width, height, savename, gt, file_name):
         # # print("resized patch ")
         # # print(resized_patch.shape)
         replace = img.copy()
-        for i in range(len(cbbox)):
-            x = int((cbbox[i][0]+cbbox[i][2])/2)
-            y = int((cbbox[i][1]+cbbox[i][3])/2)
-        #     print(x)
-        #     print(y)
+        if len(cbbox)>0:
+            for i in range(len(cbbox)):
+                x = int((cbbox[i][0]+cbbox[i][2])/2)
+                y = int((cbbox[i][1]+cbbox[i][3])/2)
+            #     print(x)
+            #     print(y)
 
-        #     print(replace[y-8: y +8, x-8 : x + 8].shape)
-            if (y+8)>416 or (x+8)>416 or (x-8)<0 or (y-8)<0:
-                continue
-            else:
-                replace[y-8: y +8, x-8 : x + 8] = resized_patch
+            #     print(replace[y-8: y +8, x-8 : x + 8].shape)
+                if (y+8)>416 or (x+8)>416 or (x-8)<0 or (y-8)<0:
+                    continue
+                else:
+                    replace[y-8: y +8, x-8 : x + 8] = resized_patch
 
-            replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
-            print("replaced")
-            try:
-                cv2.imwrite(sname, replace)
-            except:
-                print("cannot save")
+                replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
+                print("replaced")
+                try:
+                    cv2.imwrite(sname, replace)
+                except:
+                    print("cannot save")
+        else:
+            cv2.imwrite(sname, img)
         # break
    
 
