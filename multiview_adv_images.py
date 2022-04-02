@@ -179,7 +179,7 @@ def gen_images(width, height, savename, gt, file_name):
         # img, bbox = plot_boxes_cv2(img, boxes[0], sname, class_names)
 
 
-        image, cbbox = custom_bbox(gt[0], img, imgname)
+        image, cbbox = custom_bbox(gt[0], sized, imgname)
         # print(cbbox)
         # # print(cbbox)
         # # img = cv2.rectangle(sized, (cbbox[0][0], cbbox[0][1]), (cbbox[0][2], cbbox[0][3]), (0, 0, 255), 2)
