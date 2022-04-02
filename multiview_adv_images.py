@@ -144,8 +144,8 @@ def gen_images(width, height, savename, gt, file_name):
     print("View 01 success rate")
     for ele in enumerate(c1_frame_no):
         #real images
-        # im = "/home/dissana8/LAB/Visor/cam1/"+ele[1]
-        im = "/home/dissana8/LAB/Visor/cam1/000005/005614.jpg"
+        im = "/home/dissana8/LAB/Visor/cam1/"+ele[1]
+        # im = "/home/dissana8/LAB/Visor/cam1/000005/005614.jpg"
 
         #adversarial images
         # im = "/home/dissana8/TOG/Adv_images/vanishing/LAB/Visor/cam1/"+ele[1]
