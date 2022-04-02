@@ -186,7 +186,7 @@ def gen_images(width, height, savename, gt, file_name):
         # # img = cv2.rectangle(img, (cbbox[1][0], cbbox[1][1]), (cbbox[1][2], cbbox[1][3]), (0, 0, 255), 2)
         # # print("resized patch ")
         # # print(resized_patch.shape)
-        replace = sized.copy()
+        replace = img.copy()
         for i in range(len(cbbox)):
             x = int((cbbox[i][0]+cbbox[i][2])/2)
             y = int((cbbox[i][1]+cbbox[i][3])/2)
