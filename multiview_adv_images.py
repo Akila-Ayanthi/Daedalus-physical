@@ -381,10 +381,10 @@ if __name__=='__main__':
     file_name = 'LAB-GROUNDTRUTH.ref'
 
     gt = []
-    gt.append(np.load('/home/dissana8/LAB/data3/LAB/cam1_coords_.npy', allow_pickle=True))
-    gt.append(np.load('/home/dissana8/LAB/data3/LAB/cam2_coords_.npy', allow_pickle=True))
-    gt.append(np.load('/home/dissana8/LAB/data3/LAB/cam3_coords_.npy', allow_pickle=True))
-    gt.append(np.load('/home/dissana8/LAB/data3/LAB/cam4_coords_.npy', allow_pickle=True))
+    gt.append(np.load('/home/dissana8/LAB/data3/LAB/cam1_coords.npy', allow_pickle=True))
+    gt.append(np.load('/home/dissana8/LAB/data3/LAB/cam2_coords.npy', allow_pickle=True))
+    gt.append(np.load('/home/dissana8/LAB/data3/LAB/cam3_coords.npy', allow_pickle=True))
+    gt.append(np.load('/home/dissana8/LAB/data3/LAB/cam4_coords.npy', allow_pickle=True))
 
     height, width = 416, 416
     gen_images(height, width, savename, gt, file_name)
