@@ -145,7 +145,7 @@ def gen_images(width, height, savename, gt, file_name):
         im = "/home/dissana8/LAB/Visor/cam1/"+ele[1]
         
         img = cv2.imread(im)
-        print(img.shape)
+        # print(img.shape)
         # sized = cv2.resize(img, (width, height))
         # img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
