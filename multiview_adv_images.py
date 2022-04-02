@@ -145,6 +145,7 @@ def gen_images(width, height, savename, gt, file_name):
     for ele in enumerate(c1_frame_no):
         #real images
         im = "/home/dissana8/LAB/Visor/cam1/"+ele[1]
+        print(im)
         # im = "/home/dissana8/LAB/Visor/cam1/000005/005614.jpg"
 
         #adversarial images
