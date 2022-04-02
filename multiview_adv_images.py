@@ -141,10 +141,11 @@ def gen_images(width, height, savename, gt, file_name):
         c4_frame_no.append(c4_frames[frame_idx])
 
 
-    print(c1_times)
+    # print(c1_times)
     # view 01 success rate
-    # print("View 01 success rate")
-    # for ele in enumerate(c1_frame_no):
+    print("View 01 success rate")
+    for ele in enumerate(c1_frames):
+        print(ele)
         #real images
         # im = "/home/dissana8/LAB/Visor/cam1/"+ele[1]
         # # print(im)
