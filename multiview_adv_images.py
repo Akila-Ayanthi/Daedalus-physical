@@ -145,11 +145,8 @@ def gen_images(width, height, savename, gt, file_name):
     # view 01 success rate
     print("View 01 success rate")
     for ele in enumerate(c1_frame_no):
-        # real images
         im = "/home/dissana8/LAB/Visor/cam1/"+ele[1]
         
-        #adversarial images
-        # im = "/home/dissana8/TOG/Adv_images/vanishing/LAB/Visor/cam1/"+ele[1]
         img = cv2.imread(im)
         # sized = cv2.resize(img, (width, height))
         # img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
@@ -199,105 +196,158 @@ def gen_images(width, height, savename, gt, file_name):
    
 
 #     # view 02 success rate
-#     print("View 01 success rate")
-#     for ele in enumerate(c2_frame_no):
-#         im = "/home/dissana8/TOG/Adv_images/vanishing/LAB/Visor/cam2/"+ele[1]
-#         img = cv2.imread(im)
-#         sized = cv2.resize(img, (width, height))
-#         sized = cv2.cvtColor(sized, cv2.COLOR_BGR2RGB)
+    print("View 02 success rate")
+    for ele in enumerate(c1_frame_no):
+        im = "/home/dissana8/LAB/Visor/cam2/"+ele[1]
+        
+        img = cv2.imread(im)
+        # sized = cv2.resize(img, (width, height))
+        # img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
-#         for j in range(2):  # This 'for' loop is for speed check
-#                     # Because the first iteration is usually longer
-#             boxes = do_detect(model, sized, 0.4, 0.6, use_cuda)
+        imgfile = im.split('/')[6:]
+        imgfile_ = im.split('/')[5:]
+
+        imgname = '/'.join(imgfile)
+        imgname_ = '/'.join(imgfile_)
+        sname = savename + imgname_
+        # imgname = '/'.join(sname)
+        sname_ = sname.split('/')[:7]
+        directory = '/'.join(sname_)
+        # print(directory)
 
 
-#         imgfile = im.split('/')[9:]
-#         imgname = '/'.join(imgfile)
-#         sname = savename + imgname
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+        
+        # img, bbox = plot_boxes_cv2(img, boxes[0], sname, class_names)
 
-#         img, bbox = plot_boxes_cv2(img, boxes[0], sname, class_names)
 
-#         image, cbbox = custom_bbox(gt[1], img, imgname)
-#         if cbbox:
-#                 cbbox = np.array(cbbox)
-#                 bbox = np.array(bbox)
-#                 idx_gt_actual, idx_pred_actual, ious_actual, label = match_bboxes(cbbox, bbox)
-#                 cam2_gt+=len(cbbox)
-                
+        image, cbbox = custom_bbox(gt[0], img, imgname)
+        replace = img.copy()
+        if len(cbbox)>0:
+            for i in range(len(cbbox)):
+                x = int((cbbox[i][0]+cbbox[i][2])/2)
+                y = int((cbbox[i][1]+cbbox[i][3])/2)
+            #     print(x)
+            #     print(y)
 
-#                 for h in range(len(idx_gt_actual)):
-#                     t = idx_gt_actual[h]
-#                     text_c = cbbox[t]
-#                     if round(ious_actual[h], 3)>=0.0:
-#                         cam2_det+=1
+            #     print(replace[y-8: y +8, x-8 : x + 8].shape)
+                if (y+8)>416 or (x+8)>416 or (x-8)<0 or (y-8)<0:
+                    continue
+                else:
+                    replace[y-8: y +8, x-8 : x + 8] = resized_patch
+
+                replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
+                print("replaced")
+                try:
+                    cv2.imwrite(sname, replace)
+                except:
+                    print("cannot save")
+        else:
+            cv2.imwrite(sname, img)
         
 
 # #     # view 03 success rate
-#     print("View 03 success rate")
-#     for ele in enumerate(c3_frame_no):
-#         im = "/home/dissana8/TOG/Adv_images/vanishing/LAB/Visor/cam3/"+ele[1]
-#         img = cv2.imread(im)
-#         sized = cv2.resize(img, (width, height))
-#         sized = cv2.cvtColor(sized, cv2.COLOR_BGR2RGB)
+    print("View 03 success rate")
+    for ele in enumerate(c1_frame_no):
+        im = "/home/dissana8/LAB/Visor/cam3/"+ele[1]
+        
+        img = cv2.imread(im)
+        # sized = cv2.resize(img, (width, height))
+        # img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
-#         for j in range(2):  # This 'for' loop is for speed check
-#                     # Because the first iteration is usually longer
-#             boxes = do_detect(model, sized, 0.4, 0.6, use_cuda)
+        imgfile = im.split('/')[6:]
+        imgfile_ = im.split('/')[5:]
+
+        imgname = '/'.join(imgfile)
+        imgname_ = '/'.join(imgfile_)
+        sname = savename + imgname_
+        # imgname = '/'.join(sname)
+        sname_ = sname.split('/')[:7]
+        directory = '/'.join(sname_)
+        # print(directory)
 
 
-#         imgfile = im.split('/')[9:]
-#         imgname = '/'.join(imgfile)
-#         sname = savename + imgname
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+        
+        # img, bbox = plot_boxes_cv2(img, boxes[0], sname, class_names)
 
-#         img, bbox = plot_boxes_cv2(img, boxes[0], sname, class_names)
 
-#         image, cbbox = custom_bbox(gt[2], img, imgname)
-#         if cbbox:
-#                 cbbox = np.array(cbbox)
-#                 bbox = np.array(bbox)
-#                 idx_gt_actual, idx_pred_actual, ious_actual, label = match_bboxes(cbbox, bbox)
-#                 cam3_gt+=len(cbbox)
-                
+        image, cbbox = custom_bbox(gt[0], img, imgname)
+        replace = img.copy()
+        if len(cbbox)>0:
+            for i in range(len(cbbox)):
+                x = int((cbbox[i][0]+cbbox[i][2])/2)
+                y = int((cbbox[i][1]+cbbox[i][3])/2)
+            #     print(x)
+            #     print(y)
 
-#                 for h in range(len(idx_gt_actual)):
-#                     t = idx_gt_actual[h]
-#                     text_c = cbbox[t]
-#                     if round(ious_actual[h], 3)>=0.0:
-#                         cam3_det+=1
+            #     print(replace[y-8: y +8, x-8 : x + 8].shape)
+                if (y+8)>416 or (x+8)>416 or (x-8)<0 or (y-8)<0:
+                    continue
+                else:
+                    replace[y-8: y +8, x-8 : x + 8] = resized_patch
+
+                replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
+                print("replaced")
+                try:
+                    cv2.imwrite(sname, replace)
+                except:
+                    print("cannot save")
+        else:
+            cv2.imwrite(sname, img)
         
 # #     # view 04 success rate
-#     print("View 04 success rate")
-#     for ele in enumerate(c4_frame_no):
-#         im = "/home/dissana8/TOG/Adv_images/vanishing/LAB/Visor/cam4/"+ele[1]
-#         img = cv2.imread(im)
-#         sized = cv2.resize(img, (width, height))
-#         sized = cv2.cvtColor(sized, cv2.COLOR_BGR2RGB)
+    print("View 04 success rate")
+    for ele in enumerate(c1_frame_no):
+        im = "/home/dissana8/LAB/Visor/cam4/"+ele[1]
+        
+        img = cv2.imread(im)
+        # sized = cv2.resize(img, (width, height))
+        # img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
-#         for j in range(2):  # This 'for' loop is for speed check
-#                     # Because the first iteration is usually longer
-#             boxes = do_detect(model, sized, 0.4, 0.6, use_cuda)
+        imgfile = im.split('/')[6:]
+        imgfile_ = im.split('/')[5:]
+
+        imgname = '/'.join(imgfile)
+        imgname_ = '/'.join(imgfile_)
+        sname = savename + imgname_
+        # imgname = '/'.join(sname)
+        sname_ = sname.split('/')[:7]
+        directory = '/'.join(sname_)
+        # print(directory)
 
 
-#         imgfile = im.split('/')[9:]
-#         imgname = '/'.join(imgfile)
-#         sname = savename + imgname
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+        
+        # img, bbox = plot_boxes_cv2(img, boxes[0], sname, class_names)
 
-#         img, bbox = plot_boxes_cv2(img, boxes[0], sname, class_names)
 
-#         image, cbbox = custom_bbox(gt[3], img, imgname)
-#         if cbbox:
-#                 cbbox = np.array(cbbox)
-#                 bbox = np.array(bbox)
-#                 idx_gt_actual, idx_pred_actual, ious_actual, label = match_bboxes(cbbox, bbox)
-#                 cam4_gt+=len(cbbox)
-                
+        image, cbbox = custom_bbox(gt[0], img, imgname)
+        replace = img.copy()
+        if len(cbbox)>0:
+            for i in range(len(cbbox)):
+                x = int((cbbox[i][0]+cbbox[i][2])/2)
+                y = int((cbbox[i][1]+cbbox[i][3])/2)
+            #     print(x)
+            #     print(y)
 
-#                 for h in range(len(idx_gt_actual)):
-#                     t = idx_gt_actual[h]
-#                     text_c = cbbox[t]
-#                     if round(ious_actual[h], 3)>=0.0:
-#                         cam4_det+=1
+            #     print(replace[y-8: y +8, x-8 : x + 8].shape)
+                if (y+8)>416 or (x+8)>416 or (x-8)<0 or (y-8)<0:
+                    continue
+                else:
+                    replace[y-8: y +8, x-8 : x + 8] = resized_patch
 
+                replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
+                print("replaced")
+                try:
+                    cv2.imwrite(sname, replace)
+                except:
+                    print("cannot save")
+        else:
+            cv2.imwrite(sname, img)
 #     tot_det = cam1_det+cam2_det+cam3_det+cam4_det
 #     tot_gt = cam1_gt+cam2_gt+cam3_gt+cam4_gt
 
