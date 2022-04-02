@@ -166,29 +166,31 @@ def gen_images(width, height, savename, gt, file_name):
         
         # img, bbox = plot_boxes_cv2(img, boxes[0], sname, class_names)
 
+        if img.size!=0:
+            image, cbbox = custom_bbox(gt[0], img, imgname)
+            replace = img.copy()
+            if len(cbbox)>0:
+                for i in range(len(cbbox)):
+                    x = int((cbbox[i][0]+cbbox[i][2])/2)
+                    y = int((cbbox[i][1]+cbbox[i][3])/2)
+                #     print(x)
+                #     print(y)
 
-        image, cbbox = custom_bbox(gt[0], img, imgname)
-        replace = img.copy()
-        if len(cbbox)>0:
-            for i in range(len(cbbox)):
-                x = int((cbbox[i][0]+cbbox[i][2])/2)
-                y = int((cbbox[i][1]+cbbox[i][3])/2)
-            #     print(x)
-            #     print(y)
+                #     print(replace[y-8: y +8, x-8 : x + 8].shape)
+                    if (y+8)>=480 or (x+8)>=640 or (x-8)<0 or (y-8)<0:
+                        continue
+                    else:
+                        replace[y-8: y +8, x-8 : x + 8] = resized_patch
 
-            #     print(replace[y-8: y +8, x-8 : x + 8].shape)
-                if (y+8)>=480 or (x+8)>=640 or (x-8)<0 or (y-8)<0:
-                    continue
-                else:
-                    replace[y-8: y +8, x-8 : x + 8] = resized_patch
-
-                # replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
-                try:
-                    cv2.imwrite(sname, replace)
-                except:
-                    print("cannot save")
+                    # replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
+                    try:
+                        cv2.imwrite(sname, replace)
+                    except:
+                        print("cannot save")
+            else:
+                cv2.imwrite(sname, img)
         else:
-            cv2.imwrite(sname, img)
+            continue
 #         # # break
    
 
@@ -218,30 +220,31 @@ def gen_images(width, height, savename, gt, file_name):
         
         # img, bbox = plot_boxes_cv2(img, boxes[0], sname, class_names)
 
+        if img.size!=0:
+            image, cbbox = custom_bbox(gt[1], img, imgname)
+            replace = img.copy()
+            if len(cbbox)>0:
+                for i in range(len(cbbox)):
+                    x = int((cbbox[i][0]+cbbox[i][2])/2)
+                    y = int((cbbox[i][1]+cbbox[i][3])/2)
+                #     print(x)
+                #     print(y)
 
-        image, cbbox = custom_bbox(gt[1], img, imgname)
-        replace = img.copy()
-        if len(cbbox)>0:
-            for i in range(len(cbbox)):
-                x = int((cbbox[i][0]+cbbox[i][2])/2)
-                y = int((cbbox[i][1]+cbbox[i][3])/2)
-            #     print(x)
-            #     print(y)
+                #     print(replace[y-8: y +8, x-8 : x + 8].shape)
+                    if (y+8)>=480 or (x+8)>=640 or (x-8)<0 or (y-8)<0:
+                        continue
+                    else:
+                        replace[y-8: y +8, x-8 : x + 8] = resized_patch
 
-            #     print(replace[y-8: y +8, x-8 : x + 8].shape)
-                if (y+8)>=480 or (x+8)>=640 or (x-8)<0 or (y-8)<0:
-                    continue
-                else:
-                    replace[y-8: y +8, x-8 : x + 8] = resized_patch
-
-                # replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
-                try:
-                    cv2.imwrite(sname, replace)
-                except:
-                    print("cannot save")
+                    # replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
+                    try:
+                        cv2.imwrite(sname, replace)
+                    except:
+                        print("cannot save")
+            else:
+                cv2.imwrite(sname, img)
         else:
-            cv2.imwrite(sname, img)
-        
+            continue   
 
 # #     # view 03 success rate
     print("View 03 success rate")
@@ -269,29 +272,31 @@ def gen_images(width, height, savename, gt, file_name):
         
         # img, bbox = plot_boxes_cv2(img, boxes[0], sname, class_names)
 
+        if img.size!=0:
+            image, cbbox = custom_bbox(gt[2], img, imgname)
+            replace = img.copy()
+            if len(cbbox)>0:
+                for i in range(len(cbbox)):
+                    x = int((cbbox[i][0]+cbbox[i][2])/2)
+                    y = int((cbbox[i][1]+cbbox[i][3])/2)
+                #     print(x)
+                #     print(y)
 
-        image, cbbox = custom_bbox(gt[2], img, imgname)
-        replace = img.copy()
-        if len(cbbox)>0:
-            for i in range(len(cbbox)):
-                x = int((cbbox[i][0]+cbbox[i][2])/2)
-                y = int((cbbox[i][1]+cbbox[i][3])/2)
-            #     print(x)
-            #     print(y)
+                #     print(replace[y-8: y +8, x-8 : x + 8].shape)
+                    if (y+8)>=480 or (x+8)>=640 or (x-8)<0 or (y-8)<0:
+                        continue
+                    else:
+                        replace[y-8: y +8, x-8 : x + 8] = resized_patch
 
-            #     print(replace[y-8: y +8, x-8 : x + 8].shape)
-                if (y+8)>=480 or (x+8)>=640 or (x-8)<0 or (y-8)<0:
-                    continue
-                else:
-                    replace[y-8: y +8, x-8 : x + 8] = resized_patch
-
-                # replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
-                try:
-                    cv2.imwrite(sname, replace)
-                except:
-                    print("cannot save")
+                    # replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
+                    try:
+                        cv2.imwrite(sname, replace)
+                    except:
+                        print("cannot save")
+            else:
+                cv2.imwrite(sname, img)
         else:
-            cv2.imwrite(sname, img)
+            continue
         
 # #     # view 04 success rate
     print("View 04 success rate")
@@ -319,29 +324,31 @@ def gen_images(width, height, savename, gt, file_name):
         
         # img, bbox = plot_boxes_cv2(img, boxes[0], sname, class_names)
 
+        if img.size!=0:
+            image, cbbox = custom_bbox(gt[3], img, imgname)
+            replace = img.copy()
+            if len(cbbox)>0:
+                for i in range(len(cbbox)):
+                    x = int((cbbox[i][0]+cbbox[i][2])/2)
+                    y = int((cbbox[i][1]+cbbox[i][3])/2)
+                #     print(x)
+                #     print(y)
 
-        image, cbbox = custom_bbox(gt[3], img, imgname)
-        replace = img.copy()
-        if len(cbbox)>0:
-            for i in range(len(cbbox)):
-                x = int((cbbox[i][0]+cbbox[i][2])/2)
-                y = int((cbbox[i][1]+cbbox[i][3])/2)
-            #     print(x)
-            #     print(y)
+                #     print(replace[y-8: y +8, x-8 : x + 8].shape)
+                    if (y+8)>=480 or (x+8)>=640 or (x-8)<0 or (y-8)<0:
+                        continue
+                    else:
+                        replace[y-8: y +8, x-8 : x + 8] = resized_patch
 
-            #     print(replace[y-8: y +8, x-8 : x + 8].shape)
-                if (y+8)>=480 or (x+8)>=640 or (x-8)<0 or (y-8)<0:
-                    continue
-                else:
-                    replace[y-8: y +8, x-8 : x + 8] = resized_patch
-
-                # replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
-                try:
-                    cv2.imwrite(sname, replace)
-                except:
-                    print("cannot save")
+                    # replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
+                    try:
+                        cv2.imwrite(sname, replace)
+                    except:
+                        print("cannot save")
+            else:
+                cv2.imwrite(sname, img)
         else:
-            cv2.imwrite(sname, img)
+            continue
 
 
 #     tot_det = cam1_det+cam2_det+cam3_det+cam4_det
