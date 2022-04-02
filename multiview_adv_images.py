@@ -143,73 +143,74 @@ def gen_images(width, height, savename, gt, file_name):
     # view 01 success rate
     print("View 01 success rate")
     for ele in enumerate(c1_frame_no):
+        print(ele[1])
         #real images
-        im = "/home/dissana8/LAB/Visor/cam1/"+ele[1]
-        print(im)
-        # im = "/home/dissana8/LAB/Visor/cam1/000005/005614.jpg"
+        # im = "/home/dissana8/LAB/Visor/cam1/"+ele[1]
+        # # print(im)
+        # # im = "/home/dissana8/LAB/Visor/cam1/000005/005614.jpg"
 
-        #adversarial images
-        # im = "/home/dissana8/TOG/Adv_images/vanishing/LAB/Visor/cam1/"+ele[1]
-        img = cv2.imread(im)
-        # sized = cv2.resize(img, (width, height))
-        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        # #adversarial images
+        # # im = "/home/dissana8/TOG/Adv_images/vanishing/LAB/Visor/cam1/"+ele[1]
+        # img = cv2.imread(im)
+        # # sized = cv2.resize(img, (width, height))
+        # img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
-        # for j in range(2):  # This 'for' loop is for speed check
-        #             # Because the first iteration is usually longer
-        #     boxes = do_detect(model, sized, 0.4, 0.6, use_cuda)
+        # # for j in range(2):  # This 'for' loop is for speed check
+        # #             # Because the first iteration is usually longer
+        # #     boxes = do_detect(model, sized, 0.4, 0.6, use_cuda)
 
-        # #real images
-        imgfile = im.split('/')[6:]
-        imgfile_ = im.split('/')[5:]
+        # # #real images
+        # imgfile = im.split('/')[6:]
+        # imgfile_ = im.split('/')[5:]
 
-        # #adv images
-        # imgfile = im.split('/')[9:]
+        # # #adv images
+        # # imgfile = im.split('/')[9:]
 
-        imgname = '/'.join(imgfile)
-        imgname_ = '/'.join(imgfile_)
-        sname = savename + imgname_
-        # imgname = '/'.join(sname)
-        sname_ = sname.split('/')[:7]
-        directory = '/'.join(sname_)
-        # print(directory)
+        # imgname = '/'.join(imgfile)
+        # imgname_ = '/'.join(imgfile_)
+        # sname = savename + imgname_
+        # # imgname = '/'.join(sname)
+        # sname_ = sname.split('/')[:7]
+        # directory = '/'.join(sname_)
+        # # print(directory)
 
 
-        if not os.path.exists(directory):
-            os.makedirs(directory)
+        # if not os.path.exists(directory):
+        #     os.makedirs(directory)
         
-        # img, bbox = plot_boxes_cv2(img, boxes[0], sname, class_names)
+        # # img, bbox = plot_boxes_cv2(img, boxes[0], sname, class_names)
 
 
-        image, cbbox = custom_bbox(gt[0], img, imgname)
-        # print(cbbox)
+        # image, cbbox = custom_bbox(gt[0], img, imgname)
         # # print(cbbox)
-        # # img = cv2.rectangle(sized, (cbbox[0][0], cbbox[0][1]), (cbbox[0][2], cbbox[0][3]), (0, 0, 255), 2)
-        # # img = cv2.rectangle(img, (cbbox[1][0], cbbox[1][1]), (cbbox[1][2], cbbox[1][3]), (0, 0, 255), 2)
-        # # print("resized patch ")
-        # # print(resized_patch.shape)
-        replace = img.copy()
-        if len(cbbox)>0:
-            for i in range(len(cbbox)):
-                x = int((cbbox[i][0]+cbbox[i][2])/2)
-                y = int((cbbox[i][1]+cbbox[i][3])/2)
-            #     print(x)
-            #     print(y)
+        # # # print(cbbox)
+        # # # img = cv2.rectangle(sized, (cbbox[0][0], cbbox[0][1]), (cbbox[0][2], cbbox[0][3]), (0, 0, 255), 2)
+        # # # img = cv2.rectangle(img, (cbbox[1][0], cbbox[1][1]), (cbbox[1][2], cbbox[1][3]), (0, 0, 255), 2)
+        # # # print("resized patch ")
+        # # # print(resized_patch.shape)
+        # replace = img.copy()
+        # if len(cbbox)>0:
+        #     for i in range(len(cbbox)):
+        #         x = int((cbbox[i][0]+cbbox[i][2])/2)
+        #         y = int((cbbox[i][1]+cbbox[i][3])/2)
+        #     #     print(x)
+        #     #     print(y)
 
-            #     print(replace[y-8: y +8, x-8 : x + 8].shape)
-                if (y+8)>416 or (x+8)>416 or (x-8)<0 or (y-8)<0:
-                    continue
-                else:
-                    replace[y-8: y +8, x-8 : x + 8] = resized_patch
+        #     #     print(replace[y-8: y +8, x-8 : x + 8].shape)
+        #         if (y+8)>416 or (x+8)>416 or (x-8)<0 or (y-8)<0:
+        #             continue
+        #         else:
+        #             replace[y-8: y +8, x-8 : x + 8] = resized_patch
 
-                replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
-                print("replaced")
-                try:
-                    cv2.imwrite(sname, replace)
-                except:
-                    print("cannot save")
-        else:
-            cv2.imwrite(sname, img)
-        # break
+        #         replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
+        #         print("replaced")
+        #         try:
+        #             cv2.imwrite(sname, replace)
+        #         except:
+        #             print("cannot save")
+        # else:
+        #     cv2.imwrite(sname, img)
+        # # break
    
 
 #     # view 02 success rate
