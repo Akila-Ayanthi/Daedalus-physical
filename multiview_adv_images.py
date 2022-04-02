@@ -144,7 +144,7 @@ def gen_images(width, height, savename, gt, file_name):
     # print(c1_times)
     # view 01 success rate
     print("View 01 success rate")
-    for ele in enumerate(c1_frames):
+    for ele in enumerate(c1_frame_no):
         print(ele)
         #real images
         # im = "/home/dissana8/LAB/Visor/cam1/"+ele[1]
