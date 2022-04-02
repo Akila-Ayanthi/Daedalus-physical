@@ -223,7 +223,7 @@ def gen_images(width, height, savename, gt, file_name):
         if len(cbbox)>0:
             for i in range(len(cbbox)):
                 x = int((cbbox[i][0]+cbbox[i][2])/2)
-                y = int(((cbbox[i][1]+cbbox[i][3])/2)+20)
+                y = int(((cbbox[i][1]+cbbox[i][3])/2)+50)
             #     print(x)
             #     print(y)
 
