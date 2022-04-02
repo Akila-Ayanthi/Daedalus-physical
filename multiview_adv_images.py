@@ -186,25 +186,25 @@ def gen_images(width, height, savename, gt, file_name):
         # # img = cv2.rectangle(img, (cbbox[1][0], cbbox[1][1]), (cbbox[1][2], cbbox[1][3]), (0, 0, 255), 2)
         # # print("resized patch ")
         # # print(resized_patch.shape)
-        # replace = sized.copy()
-        # for i in range(len(cbbox)):
-        #     x = int((cbbox[i][0]+cbbox[i][2])/2)
-        #     y = int((cbbox[i][1]+cbbox[i][3])/2)
-        # #     print(x)
-        # #     print(y)
+        replace = sized.copy()
+        for i in range(len(cbbox)):
+            x = int((cbbox[i][0]+cbbox[i][2])/2)
+            y = int((cbbox[i][1]+cbbox[i][3])/2)
+        #     print(x)
+        #     print(y)
 
-        # #     print(replace[y-8: y +8, x-8 : x + 8].shape)
-        #     if (y+8)>416 or (x+8)>416 or (x-8)<0 or (y-8)<0:
-        #         continue
-        #     else:
-        #         replace[y-8: y +8, x-8 : x + 8] = resized_patch
+        #     print(replace[y-8: y +8, x-8 : x + 8].shape)
+            if (y+8)>416 or (x+8)>416 or (x-8)<0 or (y-8)<0:
+                continue
+            else:
+                replace[y-8: y +8, x-8 : x + 8] = resized_patch
 
-        #     replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
-        #     print("replaced")
-        #     try:
-        #         cv2.imwrite(sname, replace)
-        #     except:
-        #         print("cannot save")
+            replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
+            print("replaced")
+            try:
+                cv2.imwrite(sname, replace)
+            except:
+                print("cannot save")
         # break
    
 
