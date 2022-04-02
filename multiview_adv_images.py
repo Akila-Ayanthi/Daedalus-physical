@@ -177,7 +177,7 @@ def gen_images(width, height, savename, gt, file_name):
             #     print(y)
 
             #     print(replace[y-8: y +8, x-8 : x + 8].shape)
-                if (y+8)>=640 or (x+8)>=480 or (x-8)<0 or (y-8)<0:
+                if (y+8)>=480 or (x+8)>=640 or (x-8)<0 or (y-8)<0:
                     continue
                 else:
                     replace[y-8: y +8, x-8 : x + 8] = resized_patch
@@ -229,7 +229,7 @@ def gen_images(width, height, savename, gt, file_name):
             #     print(y)
 
             #     print(replace[y-8: y +8, x-8 : x + 8].shape)
-                if (y+8)>=640 or (x+8)>=480 or (x-8)<0 or (y-8)<0:
+                if (y+8)>=480 or (x+8)>=640 or (x-8)<0 or (y-8)<0:
                     continue
                 else:
                     replace[y-8: y +8, x-8 : x + 8] = resized_patch
@@ -280,7 +280,7 @@ def gen_images(width, height, savename, gt, file_name):
             #     print(y)
 
             #     print(replace[y-8: y +8, x-8 : x + 8].shape)
-                if (y+8)>=640 or (x+8)>=480 or (x-8)<0 or (y-8)<0:
+                if (y+8)>=480 or (x+8)>=640 or (x-8)<0 or (y-8)<0:
                     continue
                 else:
                     replace[y-8: y +8, x-8 : x + 8] = resized_patch
@@ -330,7 +330,7 @@ def gen_images(width, height, savename, gt, file_name):
             #     print(y)
 
             #     print(replace[y-8: y +8, x-8 : x + 8].shape)
-                if (y+8)>=640 or (x+8)>=480 or (x-8)<0 or (y-8)<0:
+                if (y+8)>=480 or (x+8)>=640 or (x-8)<0 or (y-8)<0:
                     continue
                 else:
                     replace[y-8: y +8, x-8 : x + 8] = resized_patch
