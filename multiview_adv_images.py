@@ -193,155 +193,155 @@ def gen_images(width, height, savename, gt, file_name):
    
 
 # #     # view 02 success rate
-#     print("View 02 success rate")
-#     for ele in enumerate(c1_frame_no):
-#         im = "/home/dissana8/LAB/Visor/cam2/"+ele[1]
+    print("View 02 success rate")
+    for ele in enumerate(c1_frame_no):
+        im = "/home/dissana8/LAB/Visor/cam2/"+ele[1]
         
-#         img = cv2.imread(im)
-#         # sized = cv2.resize(img, (width, height))
-#         # img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        img = cv2.imread(im)
+        # sized = cv2.resize(img, (width, height))
+        # img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
-#         imgfile = im.split('/')[6:]
-#         imgfile_ = im.split('/')[5:]
+        imgfile = im.split('/')[6:]
+        imgfile_ = im.split('/')[5:]
 
-#         imgname = '/'.join(imgfile)
-#         imgname_ = '/'.join(imgfile_)
-#         sname = savename + imgname_
-#         # imgname = '/'.join(sname)
-#         sname_ = sname.split('/')[:7]
-#         directory = '/'.join(sname_)
-#         # print(directory)
+        imgname = '/'.join(imgfile)
+        imgname_ = '/'.join(imgfile_)
+        sname = savename + imgname_
+        # imgname = '/'.join(sname)
+        sname_ = sname.split('/')[:7]
+        directory = '/'.join(sname_)
+        # print(directory)
 
 
-#         if not os.path.exists(directory):
-#             os.makedirs(directory)
+        if not os.path.exists(directory):
+            os.makedirs(directory)
         
-#         # img, bbox = plot_boxes_cv2(img, boxes[0], sname, class_names)
+        # img, bbox = plot_boxes_cv2(img, boxes[0], sname, class_names)
 
 
-#         image, cbbox = custom_bbox(gt[0], img, imgname)
-#         replace = img.copy()
-#         if len(cbbox)>0:
-#             for i in range(len(cbbox)):
-#                 x = int((cbbox[i][0]+cbbox[i][2])/2)
-#                 y = int((cbbox[i][1]+cbbox[i][3])/2)
-#             #     print(x)
-#             #     print(y)
+        image, cbbox = custom_bbox(gt[1], img, imgname)
+        replace = img.copy()
+        if len(cbbox)>0:
+            for i in range(len(cbbox)):
+                x = int((cbbox[i][0]+cbbox[i][2])/2)
+                y = int((cbbox[i][1]+cbbox[i][3])/2)
+            #     print(x)
+            #     print(y)
 
-#             #     print(replace[y-8: y +8, x-8 : x + 8].shape)
-#                 if (y+8)>416 or (x+8)>416 or (x-8)<0 or (y-8)<0:
-#                     continue
-#                 else:
-#                     replace[y-8: y +8, x-8 : x + 8] = resized_patch
+            #     print(replace[y-8: y +8, x-8 : x + 8].shape)
+                if (y+8)>640 or (x+8)>480 or (x-8)<0 or (y-8)<0:
+                    continue
+                else:
+                    replace[y-8: y +8, x-8 : x + 8] = resized_patch
 
-#                 replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
-#                 try:
-#                     cv2.imwrite(sname, replace)
-#                 except:
-#                     print("cannot save")
-#         else:
-#             cv2.imwrite(sname, img)
+                # replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
+                try:
+                    cv2.imwrite(sname, replace)
+                except:
+                    print("cannot save")
+        else:
+            cv2.imwrite(sname, img)
         
 
-# # #     # view 03 success rate
-#     print("View 03 success rate")
-#     for ele in enumerate(c1_frame_no):
-#         im = "/home/dissana8/LAB/Visor/cam3/"+ele[1]
+# #     # view 03 success rate
+    print("View 03 success rate")
+    for ele in enumerate(c1_frame_no):
+        im = "/home/dissana8/LAB/Visor/cam3/"+ele[1]
         
-#         img = cv2.imread(im)
-#         # sized = cv2.resize(img, (width, height))
-#         # img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        img = cv2.imread(im)
+        # sized = cv2.resize(img, (width, height))
+        # img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
-#         imgfile = im.split('/')[6:]
-#         imgfile_ = im.split('/')[5:]
+        imgfile = im.split('/')[6:]
+        imgfile_ = im.split('/')[5:]
 
-#         imgname = '/'.join(imgfile)
-#         imgname_ = '/'.join(imgfile_)
-#         sname = savename + imgname_
-#         # imgname = '/'.join(sname)
-#         sname_ = sname.split('/')[:7]
-#         directory = '/'.join(sname_)
-#         # print(directory)
+        imgname = '/'.join(imgfile)
+        imgname_ = '/'.join(imgfile_)
+        sname = savename + imgname_
+        # imgname = '/'.join(sname)
+        sname_ = sname.split('/')[:7]
+        directory = '/'.join(sname_)
+        # print(directory)
 
 
-#         if not os.path.exists(directory):
-#             os.makedirs(directory)
+        if not os.path.exists(directory):
+            os.makedirs(directory)
         
-#         # img, bbox = plot_boxes_cv2(img, boxes[0], sname, class_names)
+        # img, bbox = plot_boxes_cv2(img, boxes[0], sname, class_names)
 
 
-#         image, cbbox = custom_bbox(gt[0], img, imgname)
-#         replace = img.copy()
-#         if len(cbbox)>0:
-#             for i in range(len(cbbox)):
-#                 x = int((cbbox[i][0]+cbbox[i][2])/2)
-#                 y = int((cbbox[i][1]+cbbox[i][3])/2)
-#             #     print(x)
-#             #     print(y)
+        image, cbbox = custom_bbox(gt[2], img, imgname)
+        replace = img.copy()
+        if len(cbbox)>0:
+            for i in range(len(cbbox)):
+                x = int((cbbox[i][0]+cbbox[i][2])/2)
+                y = int((cbbox[i][1]+cbbox[i][3])/2)
+            #     print(x)
+            #     print(y)
 
-#             #     print(replace[y-8: y +8, x-8 : x + 8].shape)
-#                 if (y+8)>416 or (x+8)>416 or (x-8)<0 or (y-8)<0:
-#                     continue
-#                 else:
-#                     replace[y-8: y +8, x-8 : x + 8] = resized_patch
+            #     print(replace[y-8: y +8, x-8 : x + 8].shape)
+                if (y+8)>640 or (x+8)>480 or (x-8)<0 or (y-8)<0:
+                    continue
+                else:
+                    replace[y-8: y +8, x-8 : x + 8] = resized_patch
 
-#                 replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
-#                 try:
-#                     cv2.imwrite(sname, replace)
-#                 except:
-#                     print("cannot save")
-#         else:
-#             cv2.imwrite(sname, img)
+                # replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
+                try:
+                    cv2.imwrite(sname, replace)
+                except:
+                    print("cannot save")
+        else:
+            cv2.imwrite(sname, img)
         
-# # #     # view 04 success rate
-#     print("View 04 success rate")
-#     for ele in enumerate(c1_frame_no):
-#         im = "/home/dissana8/LAB/Visor/cam4/"+ele[1]
+# #     # view 04 success rate
+    print("View 04 success rate")
+    for ele in enumerate(c1_frame_no):
+        im = "/home/dissana8/LAB/Visor/cam4/"+ele[1]
         
-#         img = cv2.imread(im)
-#         # sized = cv2.resize(img, (width, height))
-#         # img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        img = cv2.imread(im)
+        # sized = cv2.resize(img, (width, height))
+        # img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
-#         imgfile = im.split('/')[6:]
-#         imgfile_ = im.split('/')[5:]
+        imgfile = im.split('/')[6:]
+        imgfile_ = im.split('/')[5:]
 
-#         imgname = '/'.join(imgfile)
-#         imgname_ = '/'.join(imgfile_)
-#         sname = savename + imgname_
-#         # imgname = '/'.join(sname)
-#         sname_ = sname.split('/')[:7]
-#         directory = '/'.join(sname_)
-#         # print(directory)
+        imgname = '/'.join(imgfile)
+        imgname_ = '/'.join(imgfile_)
+        sname = savename + imgname_
+        # imgname = '/'.join(sname)
+        sname_ = sname.split('/')[:7]
+        directory = '/'.join(sname_)
+        # print(directory)
 
 
-#         if not os.path.exists(directory):
-#             os.makedirs(directory)
+        if not os.path.exists(directory):
+            os.makedirs(directory)
         
-#         # img, bbox = plot_boxes_cv2(img, boxes[0], sname, class_names)
+        # img, bbox = plot_boxes_cv2(img, boxes[0], sname, class_names)
 
 
-#         image, cbbox = custom_bbox(gt[0], img, imgname)
-#         replace = img.copy()
-#         if len(cbbox)>0:
-#             for i in range(len(cbbox)):
-#                 x = int((cbbox[i][0]+cbbox[i][2])/2)
-#                 y = int((cbbox[i][1]+cbbox[i][3])/2)
-#             #     print(x)
-#             #     print(y)
+        image, cbbox = custom_bbox(gt[3], img, imgname)
+        replace = img.copy()
+        if len(cbbox)>0:
+            for i in range(len(cbbox)):
+                x = int((cbbox[i][0]+cbbox[i][2])/2)
+                y = int((cbbox[i][1]+cbbox[i][3])/2)
+            #     print(x)
+            #     print(y)
 
-#             #     print(replace[y-8: y +8, x-8 : x + 8].shape)
-#                 if (y+8)>416 or (x+8)>416 or (x-8)<0 or (y-8)<0:
-#                     continue
-#                 else:
-#                     replace[y-8: y +8, x-8 : x + 8] = resized_patch
+            #     print(replace[y-8: y +8, x-8 : x + 8].shape)
+                if (y+8)>640 or (x+8)>480 or (x-8)<0 or (y-8)<0:
+                    continue
+                else:
+                    replace[y-8: y +8, x-8 : x + 8] = resized_patch
 
-#                 replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
-#                 try:
-#                     cv2.imwrite(sname, replace)
-#                 except:
-#                     print("cannot save")
-#         else:
-#             cv2.imwrite(sname, img)
+                # replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
+                try:
+                    cv2.imwrite(sname, replace)
+                except:
+                    print("cannot save")
+        else:
+            cv2.imwrite(sname, img)
 
 
 #     tot_det = cam1_det+cam2_det+cam3_det+cam4_det
