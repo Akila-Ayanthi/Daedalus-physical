@@ -14,9 +14,9 @@ def box_center_to_corner(boxes):
     """Convert from (center, width, height) to (upper-left, lower-right)."""
     cx, cy, w, h = boxes[0], boxes[1], boxes[2], boxes[3]
     x1 = cx - 0.5 * w
-    y1 = cy - 0.2 * h
+    y1 = cy - 0.8 * h
     x2 = cx + 0.5 * w
-    y2 = cy + 0.8 * h
+    y2 = cy + 0.2 * h
     boxes = torch.stack((x1, y1, x2, y2), axis=-1)
     return boxes
 
@@ -24,7 +24,7 @@ def custom_bbox(gt_coords, img, imgname):
     cbbox_coords = []
     for k in range(len(gt_coords)):
         if gt_coords[k][0] == imgname:
-            box = [float(gt_coords[k][2]), float(gt_coords[k][3]), 50, 80]
+            box = [float(gt_coords[k][2]), float(gt_coords[k][3]), 50, 100]
             box = torch.tensor(box)
             bbox = box_center_to_corner(box)
 
