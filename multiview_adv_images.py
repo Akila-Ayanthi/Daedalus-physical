@@ -171,7 +171,7 @@ def gen_images(width, height, savename, gt, file_name):
         if len(cbbox)>0:
             for i in range(len(cbbox)):
                 x = int((cbbox[i][0]+cbbox[i][2])/2)
-                y = int((cbbox[i][1]+cbbox[i][3])/2)
+                y = int(3*(cbbox[i][1]+cbbox[i][3])/2)
             #     print(x)
             #     print(y)
 
@@ -223,7 +223,7 @@ def gen_images(width, height, savename, gt, file_name):
         if len(cbbox)>0:
             for i in range(len(cbbox)):
                 x = int((cbbox[i][0]+cbbox[i][2])/2)
-                y = int(((cbbox[i][1]+cbbox[i][3])/2)+50)
+                y = int((cbbox[i][1]+cbbox[i][3])/2)
             #     print(x)
             #     print(y)
 
