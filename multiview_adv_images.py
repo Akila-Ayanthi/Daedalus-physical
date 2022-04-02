@@ -158,13 +158,15 @@ def gen_images(width, height, savename, gt, file_name):
         #     boxes = do_detect(model, sized, 0.4, 0.6, use_cuda)
 
         # #real images
-        imgfile = im.split('/')[5:]
+        imgfile = im.split('/')[6:]
+        imgfile_ = im.split('/')[5:]
 
         # #adv images
         # imgfile = im.split('/')[9:]
 
         imgname = '/'.join(imgfile)
-        sname = savename + imgname
+        imgname_ = '/'.join(imgfile_)
+        sname = savename + imgname_
         # imgname = '/'.join(sname)
         sname_ = sname.split('/')[:7]
         directory = '/'.join(sname_)
