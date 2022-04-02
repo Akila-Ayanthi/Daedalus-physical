@@ -16,7 +16,7 @@ def box_center_to_corner(boxes):
     x1 = cx - 0.5 * w
     y1 = cy - 0.8 * h
     x2 = cx + 0.5 * w
-    y2 = cy + 0.2 * h
+    y2 = cy + 0.8 * h
     boxes = torch.stack((x1, y1, x2, y2), axis=-1)
     return boxes
 
@@ -36,7 +36,7 @@ def custom_bbox(gt_coords, img, imgname):
             coords = [x1, y1, x2, y2]
             cbbox_coords.append(coords)
                 
-            # img = cv2.rectangle(img, (x1, y1), (x2, y2), (0, 0, 255), 2)
+            img = cv2.rectangle(img, (x1, y1), (x2, y2), (0, 0, 255), 2)
             # print(cbbox_coords)         
     return img, cbbox_coords
 
