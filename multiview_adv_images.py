@@ -23,7 +23,7 @@ def box_center_to_corner(boxes):
 def custom_bbox(gt_coords, img, imgname):
     cbbox_coords = []
     for k in range(len(gt_coords)):
-        print(gt_coords[k][0])
+        # print(gt_coords[k][0])
         if gt_coords[k][0] == imgname:
             print(imgname)
             print(gt_coords[k][0])
