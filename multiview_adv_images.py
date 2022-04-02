@@ -152,7 +152,7 @@ def gen_images(width, height, savename, gt, file_name):
         # im = "/home/dissana8/TOG/Adv_images/vanishing/LAB/Visor/cam1/"+ele[1]
         img = cv2.imread(im)
         # sized = cv2.resize(img, (width, height))
-        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        # img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
         imgfile = im.split('/')[6:]
         imgfile_ = im.split('/')[5:]
@@ -187,7 +187,7 @@ def gen_images(width, height, savename, gt, file_name):
                 else:
                     replace[y-8: y +8, x-8 : x + 8] = resized_patch
 
-                # replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
+                replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
                 print("replaced")
                 try:
                     cv2.imwrite(sname, replace)
