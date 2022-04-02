@@ -23,10 +23,7 @@ def box_center_to_corner(boxes):
 def custom_bbox(gt_coords, img, imgname):
     cbbox_coords = []
     for k in range(len(gt_coords)):
-        # print(gt_coords[k][0])
         if gt_coords[k][0] == imgname:
-            print(imgname)
-            print(gt_coords[k][0])
             box = [float(gt_coords[k][2]), float(gt_coords[k][3]), 50, 80]
             box = torch.tensor(box)
             bbox = box_center_to_corner(box)
@@ -185,7 +182,6 @@ def gen_images(width, height, savename, gt, file_name):
                     replace[y-8: y +8, x-8 : x + 8] = resized_patch
 
                 replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
-                print("replaced")
                 try:
                     cv2.imwrite(sname, replace)
                 except:
@@ -238,7 +234,6 @@ def gen_images(width, height, savename, gt, file_name):
                     replace[y-8: y +8, x-8 : x + 8] = resized_patch
 
                 replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
-                print("replaced")
                 try:
                     cv2.imwrite(sname, replace)
                 except:
@@ -290,7 +285,6 @@ def gen_images(width, height, savename, gt, file_name):
                     replace[y-8: y +8, x-8 : x + 8] = resized_patch
 
                 replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
-                print("replaced")
                 try:
                     cv2.imwrite(sname, replace)
                 except:
@@ -341,7 +335,6 @@ def gen_images(width, height, savename, gt, file_name):
                     replace[y-8: y +8, x-8 : x + 8] = resized_patch
 
                 replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
-                print("replaced")
                 try:
                     cv2.imwrite(sname, replace)
                 except:
