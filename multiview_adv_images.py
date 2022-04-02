@@ -179,7 +179,7 @@ def gen_images(width, height, savename, gt, file_name):
         # img, bbox = plot_boxes_cv2(img, boxes[0], sname, class_names)
 
 
-        image, cbbox = custom_bbox(gt[0], sized, imgname)
+        image, cbbox = custom_bbox(gt[0], img, imgname)
         # print(cbbox)
         # # print(cbbox)
         # # img = cv2.rectangle(sized, (cbbox[0][0], cbbox[0][1]), (cbbox[0][2], cbbox[0][3]), (0, 0, 255), 2)
@@ -381,10 +381,10 @@ if __name__=='__main__':
     file_name = 'LAB-GROUNDTRUTH.ref'
 
     gt = []
-    gt.append(np.load('/home/dissana8/LAB/data/LAB/cam1_coords__.npy', allow_pickle=True))
-    gt.append(np.load('/home/dissana8/LAB/data/LAB/cam2_coords__.npy', allow_pickle=True))
-    gt.append(np.load('/home/dissana8/LAB/data/LAB/cam3_coords__.npy', allow_pickle=True))
-    gt.append(np.load('/home/dissana8/LAB/data/LAB/cam4_coords__.npy', allow_pickle=True))
+    gt.append(np.load('/home/dissana8/LAB/data3/LAB/cam1_coords__.npy', allow_pickle=True))
+    gt.append(np.load('/home/dissana8/LAB/data3/LAB/cam2_coords__.npy', allow_pickle=True))
+    gt.append(np.load('/home/dissana8/LAB/data3/LAB/cam3_coords__.npy', allow_pickle=True))
+    gt.append(np.load('/home/dissana8/LAB/data3/LAB/cam4_coords__.npy', allow_pickle=True))
 
     height, width = 416, 416
     gen_images(height, width, savename, gt, file_name)
