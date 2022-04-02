@@ -329,26 +329,26 @@ def gen_images(width, height, savename, gt, file_name):
 # # #     # return 0, 0, 0, 0, 0
 
 
-# def single_image_det():
-#     patch = cv2.imread("/home/dissana8/Daedalus-physical/physical_examples/0.3 confidence__/adv_poster.png")
-#     resized_patch = cv2.resize(patch, (16, 16))
-#     im = "/home/dissana8/LAB/Visor/cam1/000005/005614.jpg"
-#     img = cv2.imread(im)
-#     sized = cv2.resize(img, (width, height))
-#     sized = cv2.cvtColor(sized, cv2.COLOR_BGR2RGB)
+def single_image_det():
+    patch = cv2.imread("/home/dissana8/Daedalus-physical/physical_examples/0.3 confidence__/adv_poster.png")
+    resized_patch = cv2.resize(patch, (16, 16))
+    im = "/home/dissana8/LAB/Visor/cam1/000005/005614.jpg"
+    img = cv2.imread(im)
+    sized = cv2.resize(img, (width, height))
+    sized = cv2.cvtColor(sized, cv2.COLOR_BGR2RGB)
 
-#     ## place the adversarial patch on a single image and check the detections made by yolo-v4
-#     ##Check the TOG attack to see how to place the patch on the image
+    ## place the adversarial patch on a single image and check the detections made by yolo-v4
+    ##Check the TOG attack to see how to place the patch on the image
 
-#     imgfile = im.split('/')[6:]
-#     imgname = '/'.join(imgfile)
-#     print(imgname)
-#     sname = savename + imgname
+    imgfile = im.split('/')[6:]
+    imgname = '/'.join(imgfile)
+    print(imgname)
+    sname = savename + imgname
 
-#     # img, bbox = plot_boxes_cv2(img, boxes[0], sname, class_names)
-#     # print(bbox)
+    # img, bbox = plot_boxes_cv2(img, boxes[0], sname, class_names)
+    # print(bbox)
 
-#     image, cbbox = custom_bbox(gt[0], img, imgname)
+    image, cbbox = custom_bbox(gt[0], img, imgname)
 #     print(cbbox)
 #     img = cv2.rectangle(sized, (cbbox[0][0], cbbox[0][1]), (cbbox[0][2], cbbox[0][3]), (0, 0, 255), 2)
 #     img = cv2.rectangle(img, (cbbox[1][0], cbbox[1][1]), (cbbox[1][2], cbbox[1][3]), (0, 0, 255), 2)
@@ -384,5 +384,6 @@ if __name__=='__main__':
     gt.append(np.load('/home/dissana8/LAB/data/LAB/cam4_coords__.npy', allow_pickle=True))
 
     height, width = 416, 416
-    gen_images(height, width, savename, gt, file_name)
+    # gen_images(height, width, savename, gt, file_name)
+    single_image_det()
 
