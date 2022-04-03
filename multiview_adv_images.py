@@ -142,9 +142,9 @@ def gen_images(width, height, savename, gt, file_name):
     # view 01 success rate
     print("View 01 success rate")
     for ele in enumerate(c1_frame_no):
-        if os.path.exists(im):
-            im = "/home/dissana8/LAB/Visor/cam1/"+ele[1]
-            
+        im = "/home/dissana8/LAB/Visor/cam1/"+ele[1]
+
+        if os.path.exists(im):    
             img = cv2.imread(im)
             # print(img.shape)
             # sized = cv2.resize(img, (width, height))
