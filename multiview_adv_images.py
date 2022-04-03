@@ -189,6 +189,7 @@ def gen_images(width, height, savename, gt, file_name):
             else:
                 cv2.imwrite(sname, img)
         else:
+            print("cont")
             continue
 #         # # break
    
@@ -245,6 +246,7 @@ def gen_images(width, height, savename, gt, file_name):
             else:
                 cv2.imwrite(sname, img)
         else:
+            print("cont")
             continue
           
 
@@ -299,6 +301,7 @@ def gen_images(width, height, savename, gt, file_name):
             else:
                 cv2.imwrite(sname, img)
         else:
+            print("cont")
             continue
         
 # #     # view 04 success rate
@@ -352,6 +355,7 @@ def gen_images(width, height, savename, gt, file_name):
             else:
                 cv2.imwrite(sname, img)
         else:
+            print("cont")
             continue
 
 
