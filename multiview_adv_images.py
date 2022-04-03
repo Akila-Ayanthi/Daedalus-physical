@@ -142,31 +142,31 @@ def gen_images(width, height, savename, gt, file_name):
     # view 01 success rate
     print("View 01 success rate")
     for ele in enumerate(c1_frame_no):
-        im = "/home/dissana8/LAB/Visor/cam1/"+ele[1]
-        
-        img = cv2.imread(im)
-        # print(img.shape)
-        # sized = cv2.resize(img, (width, height))
-        # img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        if os.path.exists(im):
+            im = "/home/dissana8/LAB/Visor/cam1/"+ele[1]
+            
+            img = cv2.imread(im)
+            # print(img.shape)
+            # sized = cv2.resize(img, (width, height))
+            # img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
-        imgfile = im.split('/')[6:]
-        imgfile_ = im.split('/')[5:]
+            imgfile = im.split('/')[6:]
+            imgfile_ = im.split('/')[5:]
 
-        imgname = '/'.join(imgfile)
-        imgname_ = '/'.join(imgfile_)
-        sname = savename + imgname_
-        # imgname = '/'.join(sname)
-        sname_ = sname.split('/')[:7]
-        directory = '/'.join(sname_)
-        # print(directory)
+            imgname = '/'.join(imgfile)
+            imgname_ = '/'.join(imgfile_)
+            sname = savename + imgname_
+            # imgname = '/'.join(sname)
+            sname_ = sname.split('/')[:7]
+            directory = '/'.join(sname_)
+            # print(directory)
 
 
-        if not os.path.exists(directory):
-            os.makedirs(directory)
-        
-        # img, bbox = plot_boxes_cv2(img, boxes[0], sname, class_names)
+            if not os.path.exists(directory):
+                os.makedirs(directory)
+            print(img.size)
+            # img, bbox = plot_boxes_cv2(img, boxes[0], sname, class_names)
 
-        if img.size!=0:
             image, cbbox = custom_bbox(gt[0], img, imgname)
             replace = img.copy()
             if len(cbbox)>0:
@@ -198,29 +198,31 @@ def gen_images(width, height, savename, gt, file_name):
     print("View 02 success rate")
     for ele in enumerate(c1_frame_no):
         im = "/home/dissana8/LAB/Visor/cam2/"+ele[1]
+
+        if os.path.exists(im):
         
-        img = cv2.imread(im)
-        # sized = cv2.resize(img, (width, height))
-        # img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+            img = cv2.imread(im)
+            # sized = cv2.resize(img, (width, height))
+            # img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
-        imgfile = im.split('/')[6:]
-        imgfile_ = im.split('/')[5:]
+            imgfile = im.split('/')[6:]
+            imgfile_ = im.split('/')[5:]
 
-        imgname = '/'.join(imgfile)
-        imgname_ = '/'.join(imgfile_)
-        sname = savename + imgname_
-        # imgname = '/'.join(sname)
-        sname_ = sname.split('/')[:7]
-        directory = '/'.join(sname_)
-        # print(directory)
+            imgname = '/'.join(imgfile)
+            imgname_ = '/'.join(imgfile_)
+            sname = savename + imgname_
+            # imgname = '/'.join(sname)
+            sname_ = sname.split('/')[:7]
+            directory = '/'.join(sname_)
+            # print(directory)
 
 
-        if not os.path.exists(directory):
-            os.makedirs(directory)
-        
-        # img, bbox = plot_boxes_cv2(img, boxes[0], sname, class_names)
+            if not os.path.exists(directory):
+                os.makedirs(directory)
+            
+            # img, bbox = plot_boxes_cv2(img, boxes[0], sname, class_names)
 
-        if img.size!=0:
+            
             image, cbbox = custom_bbox(gt[1], img, imgname)
             replace = img.copy()
             if len(cbbox)>0:
@@ -244,35 +246,37 @@ def gen_images(width, height, savename, gt, file_name):
             else:
                 cv2.imwrite(sname, img)
         else:
-            continue   
+            continue
+          
 
 # #     # view 03 success rate
     print("View 03 success rate")
     for ele in enumerate(c1_frame_no):
         im = "/home/dissana8/LAB/Visor/cam3/"+ele[1]
         
-        img = cv2.imread(im)
-        # sized = cv2.resize(img, (width, height))
-        # img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        if os.path.exists(im):
+            img = cv2.imread(im)
+            # sized = cv2.resize(img, (width, height))
+            # img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
-        imgfile = im.split('/')[6:]
-        imgfile_ = im.split('/')[5:]
+            imgfile = im.split('/')[6:]
+            imgfile_ = im.split('/')[5:]
 
-        imgname = '/'.join(imgfile)
-        imgname_ = '/'.join(imgfile_)
-        sname = savename + imgname_
-        # imgname = '/'.join(sname)
-        sname_ = sname.split('/')[:7]
-        directory = '/'.join(sname_)
-        # print(directory)
+            imgname = '/'.join(imgfile)
+            imgname_ = '/'.join(imgfile_)
+            sname = savename + imgname_
+            # imgname = '/'.join(sname)
+            sname_ = sname.split('/')[:7]
+            directory = '/'.join(sname_)
+            # print(directory)
 
 
-        if not os.path.exists(directory):
-            os.makedirs(directory)
-        
-        # img, bbox = plot_boxes_cv2(img, boxes[0], sname, class_names)
+            if not os.path.exists(directory):
+                os.makedirs(directory)
+            
+            # img, bbox = plot_boxes_cv2(img, boxes[0], sname, class_names)
 
-        if img.size!=0:
+            
             image, cbbox = custom_bbox(gt[2], img, imgname)
             replace = img.copy()
             if len(cbbox)>0:
@@ -303,28 +307,29 @@ def gen_images(width, height, savename, gt, file_name):
     for ele in enumerate(c1_frame_no):
         im = "/home/dissana8/LAB/Visor/cam4/"+ele[1]
         
-        img = cv2.imread(im)
-        # sized = cv2.resize(img, (width, height))
-        # img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        if os.path.exists(im):
+            img = cv2.imread(im)
+            # sized = cv2.resize(img, (width, height))
+            # img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
-        imgfile = im.split('/')[6:]
-        imgfile_ = im.split('/')[5:]
+            imgfile = im.split('/')[6:]
+            imgfile_ = im.split('/')[5:]
 
-        imgname = '/'.join(imgfile)
-        imgname_ = '/'.join(imgfile_)
-        sname = savename + imgname_
-        # imgname = '/'.join(sname)
-        sname_ = sname.split('/')[:7]
-        directory = '/'.join(sname_)
-        # print(directory)
+            imgname = '/'.join(imgfile)
+            imgname_ = '/'.join(imgfile_)
+            sname = savename + imgname_
+            # imgname = '/'.join(sname)
+            sname_ = sname.split('/')[:7]
+            directory = '/'.join(sname_)
+            # print(directory)
 
 
-        if not os.path.exists(directory):
-            os.makedirs(directory)
-        
-        # img, bbox = plot_boxes_cv2(img, boxes[0], sname, class_names)
+            if not os.path.exists(directory):
+                os.makedirs(directory)
+            
+            # img, bbox = plot_boxes_cv2(img, boxes[0], sname, class_names)
 
-        if img.size!=0:
+            
             image, cbbox = custom_bbox(gt[3], img, imgname)
             replace = img.copy()
             if len(cbbox)>0:
