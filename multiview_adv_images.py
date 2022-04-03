@@ -164,7 +164,6 @@ def gen_images(width, height, savename, gt, file_name):
 
             if not os.path.exists(directory):
                 os.makedirs(directory)
-            print(img.size)
             # img, bbox = plot_boxes_cv2(img, boxes[0], sname, class_names)
 
             image, cbbox = custom_bbox(gt[0], img, imgname)
