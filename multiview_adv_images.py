@@ -408,7 +408,7 @@ def single_image_det(height, width):
 #     img = cv2.rectangle(img, (cbbox[1][0], cbbox[1][1]), (cbbox[1][2], cbbox[1][3]), (0, 0, 255), 2)
 #     # print("resized patch ")
 #     print(resized_patch.shape)
-#     replace = sized.copy()
+    replace = sized.copy()
 #     print("replace")
 #     print(replace.shape)
     for i in range(len(cbbox)):
