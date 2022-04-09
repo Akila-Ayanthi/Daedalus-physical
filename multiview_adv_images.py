@@ -13,6 +13,13 @@ def findClosest(time, camera_time_list):
 def box_center_to_corner(boxes):
     """Convert from (center, width, height) to (upper-left, lower-right)."""
     cx, cy, w, h = boxes[0], boxes[1], boxes[2], boxes[3]
+    #originally used this
+    # x1 = cx - 0.5 * w
+    # y1 = cy - 0.2 * h
+    # x2 = cx + 0.5 * w
+    # y2 = cy + 0.8 * h
+
+    #with adversarial images
     x1 = cx - 0.5 * w
     y1 = cy - 0.8 * h
     x2 = cx + 0.5 * w
@@ -408,7 +415,8 @@ def single_image_det(height, width):
 #     img = cv2.rectangle(img, (cbbox[1][0], cbbox[1][1]), (cbbox[1][2], cbbox[1][3]), (0, 0, 255), 2)
 #     # print("resized patch ")
 #     print(resized_patch.shape)
-    replace = sized.copy()
+    # replace = sized.copy()
+    replace = img.copy()
 #     print("replace")
 #     print(replace.shape)
     for i in range(len(cbbox)):
@@ -423,7 +431,7 @@ def single_image_det(height, width):
             replace[y-8: y +8, x-8 : x + 8] = resized_patch
 
     replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
-    cv2.imwrite('boxed.png', img)
+    # cv2.imwrite('boxed.png', img)
     cv2.imwrite('replace.png', replace)
 
 
