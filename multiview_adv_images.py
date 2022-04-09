@@ -53,7 +53,7 @@ def gen_images(width, height, savename, gt, file_name):
 
     patch = cv2.imread("/home/dissana8/Daedalus-physical/physical_examples/0.3 confidence__/adv_poster.png")
     print("patch read")
-    resized_patch = cv2.resize(patch, (16, 16))
+    resized_patch = cv2.resize(patch, (25, 25))
 
 
     # gt_actual=0
@@ -444,6 +444,6 @@ if __name__=='__main__':
     gt.append(np.load('/home/dissana8/LAB/data3/LAB/cam4_coords.npy', allow_pickle=True))
 
     height, width = 416, 416
-    gen_images(height, width, savename, gt, file_name)
-    # single_image_det(height, width)
+    # gen_images(height, width, savename, gt, file_name)
+    single_image_det(height, width)
 
