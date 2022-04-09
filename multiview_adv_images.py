@@ -16,7 +16,7 @@ def box_center_to_corner(boxes):
     x1 = cx - 0.5 * w
     y1 = cy - 0.8 * h
     x2 = cx + 0.5 * w
-    y2 = cy + 0.2 * h
+    y2 = cy + 0.8 * h
     boxes = torch.stack((x1, y1, x2, y2), axis=-1)
     return boxes
 
@@ -36,7 +36,7 @@ def custom_bbox(gt_coords, img, imgname):
             coords = [x1, y1, x2, y2]
             cbbox_coords.append(coords)
                 
-            # img = cv2.rectangle(img, (x1, y1), (x2, y2), (0, 0, 255), 2)
+            img = cv2.rectangle(img, (x1, y1), (x2, y2), (0, 0, 255), 2)
             # print(cbbox_coords)         
     return img, cbbox_coords
 
@@ -383,7 +383,7 @@ def gen_images(width, height, savename, gt, file_name):
 # # #     # return 0, 0, 0, 0, 0
 
 
-def single_image_det():
+def single_image_det(height, width):
     patch = cv2.imread("/home/dissana8/Daedalus-physical/physical_examples/0.3 confidence__/adv_poster.png")
     resized_patch = cv2.resize(patch, (16, 16))
     im = "/home/dissana8/LAB/Visor/cam1/000005/005614.jpg"
@@ -422,9 +422,9 @@ def single_image_det():
 #         else:
 #             replace[y-8: y +8, x-8 : x + 8] = resized_patch
 
-#     replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
-#     cv2.imwrite('boxed.png', img)
-#     cv2.imwrite('replace.png', replace)
+    replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
+    cv2.imwrite('boxed.png', img)
+    cv2.imwrite('replace.png', replace)
 
 
 if __name__=='__main__':
@@ -438,6 +438,6 @@ if __name__=='__main__':
     gt.append(np.load('/home/dissana8/LAB/data3/LAB/cam4_coords.npy', allow_pickle=True))
 
     height, width = 416, 416
-    gen_images(height, width, savename, gt, file_name)
-    # single_image_det()
+    # gen_images(height, width, savename, gt, file_name)
+    single_image_det(height, width)
 
