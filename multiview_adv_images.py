@@ -421,7 +421,7 @@ def single_image_det(height, width):
 #     print(replace.shape)
     for i in range(len(cbbox)):
         x = int((cbbox[i][0]+cbbox[i][2])/2)
-        y = 3*int((cbbox[i][1]+cbbox[i][3])/2)
+        y = 3*int((cbbox[i][1]+cbbox[i][3])/4)
         print(i)
         print(x)
         print(y)
