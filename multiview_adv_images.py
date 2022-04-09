@@ -426,10 +426,10 @@ def single_image_det(height, width):
         print(cbbox[i][1])
         print(cbbox[i][2])
         print(cbbox[i][3])
-        y = int((cbbox[i][1]+cbbox[i][3])/2)
+        y = int((cbbox[i][3]-cbbox[i][1])/3)+cbbox[i][1]
         # print(i)
         # print(x)
-        # print(y)
+        print(y)
 
         if (y+8)>=480 or (x+8)>=640 or (x-8)<0 or (y-8)<0:
             continue
