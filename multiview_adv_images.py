@@ -426,7 +426,7 @@ def single_image_det(height, width):
         print(x)
         print(y)
 
-        if (y+8)>416 or (x+8)>416 or (x-8)<0 or (y-8)<0:
+        if (y+8)>=480 or (x+8)>=640 or (x-8)<0 or (y-8)<0:
             continue
         else:
             replace[y-8: y +8, x-8 : x + 8] = resized_patch
