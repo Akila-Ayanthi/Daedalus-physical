@@ -421,10 +421,13 @@ def single_image_det(height, width):
 #     print(replace.shape)
     for i in range(len(cbbox)):
         x = int((cbbox[i][0]+cbbox[i][2])/2)
-        y = 3*int((cbbox[i][1]+cbbox[i][3])/2)
         print(i)
-        print(x)
-        print(y)
+        print(cbbox[i][1])
+        print(cbbox[i][3])
+        y = int((cbbox[i][1]+cbbox[i][3])/2)
+        # print(i)
+        # print(x)
+        # print(y)
 
         if (y+8)>=480 or (x+8)>=640 or (x-8)<0 or (y-8)<0:
             continue
