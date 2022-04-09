@@ -53,7 +53,7 @@ def gen_images(width, height, savename, gt, file_name):
 
     patch = cv2.imread("/home/dissana8/Daedalus-physical/physical_examples/0.3 confidence__/adv_poster.png")
     print("patch read")
-    resized_patch = cv2.resize(patch, (25, 25))
+    resized_patch = cv2.resize(patch, (16, 16))
 
 
     # gt_actual=0
@@ -392,7 +392,7 @@ def gen_images(width, height, savename, gt, file_name):
 
 def single_image_det(height, width):
     patch = cv2.imread("/home/dissana8/Daedalus-physical/physical_examples/0.3 confidence__/adv_poster.png")
-    resized_patch = cv2.resize(patch, (32, 32))
+    resized_patch = cv2.resize(patch, (24, 24))
     im = "/home/dissana8/LAB/Visor/cam1/000005/005900.jpg"
     img = cv2.imread(im)
     sized = cv2.resize(img, (width, height))
@@ -426,7 +426,7 @@ def single_image_det(height, width):
         if (y+8)>=480 or (x+8)>=640 or (x-8)<0 or (y-8)<0:
             continue
         else:
-            replace[y-8: y +8, x-8 : x + 8] = resized_patch
+            replace[y-12: y +12, x-12 : x + 12] = resized_patch
 
     replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
     # cv2.imwrite('boxed.png', img)
