@@ -53,7 +53,7 @@ def gen_images(width, height, savename, gt, file_name):
 
     patch = cv2.imread("/home/dissana8/Daedalus-physical/physical_examples/0.3 confidence__/adv_poster.png")
     print("patch read")
-    resized_patch = cv2.resize(patch, (16, 16))
+    resized_patch = cv2.resize(patch, (20, 20))
 
 
     # gt_actual=0
@@ -183,10 +183,10 @@ def gen_images(width, height, savename, gt, file_name):
                 #     print(y)
 
                 #     print(replace[y-8: y +8, x-8 : x + 8].shape)
-                    if (y+8)>=480 or (x+8)>=640 or (x-8)<0 or (y-8)<0:
+                    if (y+10)>=480 or (x+10)>=640 or (x-10)<0 or (y-10)<0:
                         continue
                     else:
-                        replace[y-8: y +8, x-8 : x + 8] = resized_patch
+                        replace[y-10: y +10, x-10 : x + 10] = resized_patch
 
                     # replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
                     try:
@@ -240,10 +240,10 @@ def gen_images(width, height, savename, gt, file_name):
                 #     print(y)
 
                 #     print(replace[y-8: y +8, x-8 : x + 8].shape)
-                    if (y+8)>=480 or (x+8)>=640 or (x-8)<0 or (y-8)<0:
+                    if (y+10)>=480 or (x+10)>=640 or (x-10)<0 or (y-10)<0:
                         continue
                     else:
-                        replace[y-8: y +8, x-8 : x + 8] = resized_patch
+                        replace[y-10: y +10, x-10 : x + 10] = resized_patch
 
                     # replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
                     try:
@@ -295,10 +295,10 @@ def gen_images(width, height, savename, gt, file_name):
                 #     print(y)
 
                 #     print(replace[y-8: y +8, x-8 : x + 8].shape)
-                    if (y+8)>=480 or (x+8)>=640 or (x-8)<0 or (y-8)<0:
+                    if (y+10)>=480 or (x+10)>=640 or (x-10)<0 or (y-10)<0:
                         continue
                     else:
-                        replace[y-8: y +8, x-8 : x + 8] = resized_patch
+                        replace[y-10: y +10, x-10 : x + 10] = resized_patch
 
                     # replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
                     try:
@@ -349,10 +349,10 @@ def gen_images(width, height, savename, gt, file_name):
                 #     print(y)
 
                 #     print(replace[y-8: y +8, x-8 : x + 8].shape)
-                    if (y+8)>=480 or (x+8)>=640 or (x-8)<0 or (y-8)<0:
+                    if (y+10)>=480 or (x+10)>=640 or (x-10)<0 or (y-10)<0:
                         continue
                     else:
-                        replace[y-8: y +8, x-8 : x + 8] = resized_patch
+                        replace[y-10: y +10, x-10 : x + 10] = resized_patch
 
                     # replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
                     try:
@@ -444,6 +444,6 @@ if __name__=='__main__':
     gt.append(np.load('/home/dissana8/LAB/data3/LAB/cam4_coords.npy', allow_pickle=True))
 
     height, width = 416, 416
-    # gen_images(height, width, savename, gt, file_name)
-    single_image_det(height, width)
+    gen_images(height, width, savename, gt, file_name)
+    # single_image_det(height, width)
 
