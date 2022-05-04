@@ -5,6 +5,7 @@ from torch import nn
 import torch.nn.functional as F
 # from tool.torch_utils import *
 import os
+from utils import do_detect
 
 def findClosest(time, camera_time_list):
     val = min(camera_time_list, key=lambda x: abs(x - time))
@@ -53,7 +54,7 @@ def gen_images(width, height, savename, gt, file_name):
 
     patch = cv2.imread("/home/dissana8/Daedalus-physical/physical_examples/0.3 confidence__/adv_poster.png")
     print("patch read")
-    resized_patch = cv2.resize(patch, (20, 20))
+    resized_patch = cv2.resize(patch, (32, 32))
 
 
     # gt_actual=0
@@ -183,10 +184,10 @@ def gen_images(width, height, savename, gt, file_name):
                 #     print(y)
 
                 #     print(replace[y-8: y +8, x-8 : x + 8].shape)
-                    if (y+10)>=480 or (x+10)>=640 or (x-10)<0 or (y-10)<0:
+                    if (y+16)>=480 or (x+16)>=640 or (x-16)<0 or (y-16)<0:
                         continue
                     else:
-                        replace[y-10: y +10, x-10 : x + 10] = resized_patch
+                        replace[y-16: y +16, x-16 : x + 16] = resized_patch
 
                     # replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
                     try:
@@ -240,10 +241,10 @@ def gen_images(width, height, savename, gt, file_name):
                 #     print(y)
 
                 #     print(replace[y-8: y +8, x-8 : x + 8].shape)
-                    if (y+10)>=480 or (x+10)>=640 or (x-10)<0 or (y-10)<0:
+                    if (y+16)>=480 or (x+16)>=640 or (x-16)<0 or (y-16)<0:
                         continue
                     else:
-                        replace[y-10: y +10, x-10 : x + 10] = resized_patch
+                        replace[y-16: y +16, x-16 : x + 16] = resized_patch
 
                     # replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
                     try:
@@ -295,10 +296,10 @@ def gen_images(width, height, savename, gt, file_name):
                 #     print(y)
 
                 #     print(replace[y-8: y +8, x-8 : x + 8].shape)
-                    if (y+10)>=480 or (x+10)>=640 or (x-10)<0 or (y-10)<0:
+                    if (y+16)>=480 or (x+16)>=640 or (x-16)<0 or (y-16)<0:
                         continue
                     else:
-                        replace[y-10: y +10, x-10 : x + 10] = resized_patch
+                        replace[y-16: y +16, x-16 : x + 16] = resized_patch
 
                     # replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
                     try:
@@ -349,10 +350,10 @@ def gen_images(width, height, savename, gt, file_name):
                 #     print(y)
 
                 #     print(replace[y-8: y +8, x-8 : x + 8].shape)
-                    if (y+10)>=480 or (x+10)>=640 or (x-10)<0 or (y-10)<0:
+                    if (y+16)>=480 or (x+16)>=640 or (x-16)<0 or (y-16)<0:
                         continue
                     else:
-                        replace[y-10: y +10, x-10 : x + 10] = resized_patch
+                        replace[y-16: y +16, x-16 : x + 16] = resized_patch
 
                     # replace = cv2.cvtColor(replace, cv2.COLOR_RGB2BGR)
                     try:
@@ -400,6 +401,10 @@ def single_image_det(height, width):
 
     ## place the adversarial patch on a single image and check the detections made by yolo-v4
     ##Check the TOG attack to see how to place the patch on the image
+
+    for j in range(2):  # This 'for' loop is for speed check
+                    # Because the first iteration is usually longer
+            boxes = do_detect(model, sized, 0.4, 0.6, use_cuda)
 
     imgfile = im.split('/')[6:]
     imgname = '/'.join(imgfile)
